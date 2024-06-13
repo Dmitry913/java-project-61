@@ -2,6 +2,9 @@ package hexlet.code.games;
 
 public class CalculatorGame implements Game {
 
+    private static final int ADDITION = 1;
+    private static final int SUBTRACTION = 2;
+    private static final int MULTIPLICATION = 3;
     private int answer;
 
     @Override
@@ -11,16 +14,16 @@ public class CalculatorGame implements Game {
         String template = "%d %s %d";
         String question;
 
-        switch (RANDOM_GENERATOR.nextInt(1, 4)) {
-            case 1:
+        switch (RANDOM_GENERATOR.nextInt(ADDITION, MULTIPLICATION + 1)) {
+            case ADDITION:
                 question = String.format(template, firstNumber, "+", secondNumber);
                 answer = firstNumber + secondNumber;
                 break;
-            case 2:
+            case SUBTRACTION:
                 question = String.format(template, firstNumber, "-", secondNumber);
                 answer = firstNumber - secondNumber;
                 break;
-            case 3:
+            case MULTIPLICATION:
                 question = String.format(template, firstNumber, "*", secondNumber);
                 answer = firstNumber * secondNumber;
                 break;

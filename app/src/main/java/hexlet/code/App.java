@@ -2,6 +2,7 @@ package hexlet.code;
 
 import hexlet.code.games.CalculatorGame;
 import hexlet.code.games.EvenGame;
+import hexlet.code.games.GCDGame;
 
 import static hexlet.code.Cli.SCANNER;
 import static hexlet.code.Cli.userGreeting;
@@ -11,12 +12,16 @@ public class App {
     public static final int FIRST_GAME = 1;
     public static final int SECOND_GAME = 2;
     public static final int THIRD_GAME = 3;
+    public static final int FOURTH_GAME = 4;
 
     public static void main(String[] args) {
         printGameMenu();
         int userChoice = Integer.parseInt(SCANNER.nextLine());
         System.out.println();
         switch (userChoice) {
+            case FOURTH_GAME:
+                Engine.runFlow(new GCDGame());
+                break;
             case THIRD_GAME:
                 Engine.runFlow(new CalculatorGame());
                 break;
@@ -35,6 +40,7 @@ public class App {
         System.out.println("1 - Greet");
         System.out.println("2 - Even");
         System.out.println("3 - Calc");
+        System.out.println("4 - GCD");
         System.out.println("0 - Exit");
         System.out.print("Your choice: ");
     }
