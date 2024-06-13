@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import static hexlet.code.Engine.RANDOM_GENERATOR;
 
-public class EvenGame {
+public final class EvenGame {
 
     private static final String CORRECT_ANSWER_FOR_EVEN = "yes";
     private static final String CORRECT_ANSWER_FOR_ODD = "no";

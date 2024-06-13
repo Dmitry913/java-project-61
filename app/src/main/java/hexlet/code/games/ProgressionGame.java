@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import static hexlet.code.Engine.RANDOM_GENERATOR;
 
-public class ProgressionGame {
+public final class ProgressionGame {
 
     private static final int PROGRESSION_LENGTH_MIN = 5;
     private static final int PROGRESSION_LENGTH_MAX = 15; // not included

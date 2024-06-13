@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import static hexlet.code.Engine.RANDOM_GENERATOR;
 
-public class GCDGame {
+public final class GCDGame {
 
     private int answer;
 

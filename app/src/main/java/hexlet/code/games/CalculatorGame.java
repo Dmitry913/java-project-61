@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import static hexlet.code.Engine.RANDOM_GENERATOR;
 
-public class CalculatorGame {
+public final class CalculatorGame {
 
     private static final int ADDITION = 1;
     private static final int SUBTRACTION = 2;
