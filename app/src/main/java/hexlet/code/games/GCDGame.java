@@ -4,11 +4,13 @@ import static hexlet.code.Engine.RANDOM_GENERATOR;
 
 public final class GCDGame {
 
+    private static final int MAX_GCD_NUMBER = 100;
+
     private int answer;
 
     public String generateQuestion() {
-        int firstNumber = RANDOM_GENERATOR.nextInt(1, 100);
-        int secondNumber = RANDOM_GENERATOR.nextInt(1, 100);
+        int firstNumber = RANDOM_GENERATOR.nextInt(1, MAX_GCD_NUMBER);
+        int secondNumber = RANDOM_GENERATOR.nextInt(1, MAX_GCD_NUMBER);
         answer = findGCD(firstNumber, secondNumber);
         return String.format("%d %d", firstNumber, secondNumber);
     }

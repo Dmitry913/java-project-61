@@ -7,12 +7,13 @@ public final class CalculatorGame {
     private static final int ADDITION = 1;
     private static final int SUBTRACTION = 2;
     private static final int MULTIPLICATION = 3;
+    private static final int MAX_CALC_NUMBER = 100;
 
     private int answer;
 
     public String generateQuestion() {
-        int firstNumber = RANDOM_GENERATOR.nextInt(1, 100);
-        int secondNumber = RANDOM_GENERATOR.nextInt(1, 100);
+        int firstNumber = RANDOM_GENERATOR.nextInt(1, MAX_CALC_NUMBER);
+        int secondNumber = RANDOM_GENERATOR.nextInt(1, MAX_CALC_NUMBER);
         String template = "%d %s %d";
         String question;
 

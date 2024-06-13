@@ -11,6 +11,7 @@ public final class PrimeGame {
 
     private static final String CORRECT_ANSWER_FOR_PRIME = "yes";
     private static final String CORRECT_ANSWER_FOR_COMPOSITE = "no";
+    private static final int MAX_PRIME_NUMBER = 100;
     private static final Set<Integer> PRIME_NUMBERS = new HashSet<>(Arrays.asList(
             2, 3, 5, 7, 11, 13, 17, 19, 23,
             29, 31, 37, 41, 43, 47, 53, 59,
@@ -21,7 +22,7 @@ public final class PrimeGame {
     private int hiddenNumber;
 
     public String generateQuestion() {
-        hiddenNumber = RANDOM_GENERATOR.nextInt(1, 100);
+        hiddenNumber = RANDOM_GENERATOR.nextInt(1, MAX_PRIME_NUMBER);
         return String.valueOf(hiddenNumber);
     }
 
