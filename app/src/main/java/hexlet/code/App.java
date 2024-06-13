@@ -24,19 +24,44 @@ public class App {
         System.out.println();
         switch (userChoice) {
             case SIXTH_GAME:
-                Engine.runFlow(new PrimeGame());
+                PrimeGame primeGame = new PrimeGame();
+                Engine.runFlow(
+                        primeGame.generateQuestion(),
+                        primeGame.explainRules(),
+                        primeGame.getAnswer()
+                );
                 break;
             case FIFTH_GAME:
-                Engine.runFlow(new ProgressionGame());
+                ProgressionGame progressionGame = new ProgressionGame();
+                Engine.runFlow(
+                        progressionGame.generateQuestion(),
+                        progressionGame.explainRules(),
+                        progressionGame.getAnswer()
+                );
                 break;
             case FOURTH_GAME:
-                Engine.runFlow(new GCDGame());
+                GCDGame gcdGame = new GCDGame();
+                Engine.runFlow(
+                        gcdGame.generateQuestion(),
+                        gcdGame.explainRules(),
+                        gcdGame.getAnswer()
+                );
                 break;
             case THIRD_GAME:
-                Engine.runFlow(new CalculatorGame());
+                CalculatorGame calculatorGame = new CalculatorGame();
+                Engine.runFlow(
+                        calculatorGame.generateQuestion(),
+                        calculatorGame.explainRules(),
+                        calculatorGame.getAnswer()
+                );
                 break;
             case SECOND_GAME:
-                Engine.runFlow(new EvenGame());
+                EvenGame evenGame = new EvenGame();
+                Engine.runFlow(
+                        evenGame.generateQuestion(),
+                        evenGame.explainRules(),
+                        evenGame.getAnswer()
+                );
                 break;
             case FIRST_GAME:
                 userGreeting();

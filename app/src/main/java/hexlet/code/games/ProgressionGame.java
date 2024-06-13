@@ -1,6 +1,8 @@
 package hexlet.code.games;
 
-public class ProgressionGame implements Game {
+import static hexlet.code.Engine.RANDOM_GENERATOR;
+
+public class ProgressionGame {
 
     private static final int PROGRESSION_LENGTH_MIN = 5;
     private static final int PROGRESSION_LENGTH_MAX = 15; // not included
@@ -11,7 +13,6 @@ public class ProgressionGame implements Game {
 
     private int answer;
 
-    @Override
     public String generateQuestion() {
         int length = RANDOM_GENERATOR.nextInt(PROGRESSION_LENGTH_MIN, PROGRESSION_LENGTH_MAX);
         int hidePosition = RANDOM_GENERATOR.nextInt(0, length);
@@ -38,12 +39,10 @@ public class ProgressionGame implements Game {
         return questionBuilder.toString().trim();
     }
 
-    @Override
     public String getAnswer() {
         return String.valueOf(answer);
     }
 
-    @Override
     public String explainRules() {
         return "What number is missing in the progression?\n";
     }

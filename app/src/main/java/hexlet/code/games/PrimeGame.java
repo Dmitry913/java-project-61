@@ -5,7 +5,9 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Predicate;
 
-public class PrimeGame implements Game {
+import static hexlet.code.Engine.RANDOM_GENERATOR;
+
+public class PrimeGame {
 
     private static final String CORRECT_ANSWER_FOR_PRIME = "yes";
     private static final String CORRECT_ANSWER_FOR_COMPOSITE = "no";
@@ -23,13 +25,11 @@ public class PrimeGame implements Game {
 
     private int hiddenNumber;
 
-    @Override
     public String generateQuestion() {
         hiddenNumber = RANDOM_GENERATOR.nextInt(1, 100);
         return String.valueOf(hiddenNumber);
     }
 
-    @Override
     public String getAnswer() {
         if (IS_PRIME.test(hiddenNumber)) {
             return CORRECT_ANSWER_FOR_PRIME;
@@ -38,7 +38,6 @@ public class PrimeGame implements Game {
         }
     }
 
-    @Override
     public String explainRules() {
         return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
     }

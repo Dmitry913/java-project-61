@@ -1,13 +1,15 @@
 package hexlet.code.games;
 
-public class CalculatorGame implements Game {
+import static hexlet.code.Engine.RANDOM_GENERATOR;
+
+public class CalculatorGame {
 
     private static final int ADDITION = 1;
     private static final int SUBTRACTION = 2;
     private static final int MULTIPLICATION = 3;
+
     private int answer;
 
-    @Override
     public String generateQuestion() {
         int firstNumber = RANDOM_GENERATOR.nextInt(1, 100);
         int secondNumber = RANDOM_GENERATOR.nextInt(1, 100);
@@ -35,12 +37,10 @@ public class CalculatorGame implements Game {
         return question;
     }
 
-    @Override
     public String getAnswer() {
         return String.valueOf(answer);
     }
 
-    @Override
     public String explainRules() {
         return "What is the result of the expression?";
     }
