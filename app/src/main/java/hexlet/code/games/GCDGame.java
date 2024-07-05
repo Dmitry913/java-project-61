@@ -2,23 +2,19 @@ package hexlet.code.games;
 
 import static hexlet.code.Engine.RANDOM_GENERATOR;
 
-public final class GCDGame {
+public final class GCDGame implements Game {
 
     private static final int MAX_GCD_NUMBER = 100;
 
-    private int answer;
-
-    public String generateQuestion() {
+    @Override
+    public String[] getQuestionAndAnswer() {
         int firstNumber = RANDOM_GENERATOR.nextInt(1, MAX_GCD_NUMBER);
         int secondNumber = RANDOM_GENERATOR.nextInt(1, MAX_GCD_NUMBER);
-        answer = findGCD(firstNumber, secondNumber);
-        return String.format("%d %d", firstNumber, secondNumber);
+        int answer = findGCD(firstNumber, secondNumber);
+        return new String[]{String.format("%d %d", firstNumber, secondNumber), String.valueOf(answer)};
     }
 
-    public String getAnswer() {
-        return String.valueOf(answer);
-    }
-
+    @Override
     public String explainRules() {
         return "Find the greatest common divisor of given numbers.";
     }

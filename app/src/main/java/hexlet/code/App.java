@@ -6,9 +6,6 @@ import hexlet.code.games.GCDGame;
 import hexlet.code.games.PrimeGame;
 import hexlet.code.games.ProgressionGame;
 
-import static hexlet.code.Cli.SCANNER;
-import static hexlet.code.Cli.userGreeting;
-
 public class App {
 
     public static final int FIRST_GAME = 1;
@@ -20,54 +17,36 @@ public class App {
 
     public static void main(String[] args) {
         printGameMenu();
-        int userChoice = Integer.parseInt(SCANNER.nextLine());
+        int userChoice = Cli.selectGame();
         System.out.println();
         switch (userChoice) {
             case SIXTH_GAME:
-                PrimeGame primeGame = new PrimeGame();
-                Engine.runFlow(
-                        primeGame.generateQuestion(),
-                        primeGame.explainRules(),
-                        primeGame.getAnswer()
-                );
+                Engine.runFlow(new PrimeGame());
                 break;
             case FIFTH_GAME:
-                ProgressionGame progressionGame = new ProgressionGame();
-                Engine.runFlow(
-                        progressionGame.generateQuestion(),
-                        progressionGame.explainRules(),
-                        progressionGame.getAnswer()
-                );
+                Engine.runFlow(new ProgressionGame());
                 break;
             case FOURTH_GAME:
-                GCDGame gcdGame = new GCDGame();
-                Engine.runFlow(
-                        gcdGame.generateQuestion(),
-                        gcdGame.explainRules(),
-                        gcdGame.getAnswer()
-                );
+                Engine.runFlow(new GCDGame());
                 break;
             case THIRD_GAME:
-                CalculatorGame calculatorGame = new CalculatorGame();
-                Engine.runFlow(
-                        calculatorGame.generateQuestion(),
-                        calculatorGame.explainRules(),
-                        calculatorGame.getAnswer()
-                );
+                Engine.runFlow(new CalculatorGame());
                 break;
             case SECOND_GAME:
-                EvenGame evenGame = new EvenGame();
-                Engine.runFlow(
-                        evenGame.generateQuestion(),
-                        evenGame.explainRules(),
-                        evenGame.getAnswer()
-                );
+                Engine.runFlow(new EvenGame());
                 break;
             case FIRST_GAME:
-                userGreeting();
+                firstGame();
                 break;
-            default: break;
+            default:
+                throw new RuntimeException(String.format("Игры %s не сущестует", userChoice));
         }
+    }
+
+    private static void firstGame() {
+        Greeting.welcome();
+        String username = Cli.getUsername();
+        Greeting.helloUser(username);
     }
 
     public static void printGameMenu() {

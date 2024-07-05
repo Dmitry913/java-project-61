@@ -1,38 +1,39 @@
 package hexlet.code;
 
-import java.util.Random;
+import hexlet.code.games.Game;
 
-import static hexlet.code.Cli.SCANNER;
-import static hexlet.code.Cli.userGreeting;
+import java.util.Random;
 
 public class Engine {
 
     private static final int COUNT_GAMES = 3;
     public static final Random RANDOM_GENERATOR = new Random();
 
-    public static void runFlow(String question, String rules, String answer) {
-        String userName = userGreeting();
+    public static void runFlow(Game game) {
+        String rules = game.explainRules();
+
+        Greeting.welcome();
+        String username = Cli.getUsername();
+        Greeting.helloUser(username);
+
         System.out.println(rules);
 
         for (int i = 0; i < COUNT_GAMES; i++) {
+            String[] questionAndAnswer = game.getQuestionAndAnswer();
+            String question = questionAndAnswer[0];
+            String correctAnswer = questionAndAnswer[1];
             System.out.println("Question: " + question);
-            if (!checkAnswer(answer)) {
-                System.out.printf("Let's try again, %s!\n", userName);
+
+            String userAnswer = Cli.getUserAnswer();
+            if (!correctAnswer.equals(userAnswer)) {
+                System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", userAnswer, correctAnswer);
+                System.out.printf("Let's try again, %s!\n", username);
                 return;
+            } else {
+                System.out.println("Correct!");
             }
         }
-        System.out.printf("Congratulations, %s!\n", userName);
+        System.out.printf("Congratulations, %s!\n", username);
     }
 
-    private static boolean checkAnswer(String correctAnswer) {
-        System.out.print("Your answer: ");
-        String userAnswer = SCANNER.nextLine();
-        if (!correctAnswer.equals(userAnswer)) {
-            System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", userAnswer, correctAnswer);
-            return false;
-        } else {
-            System.out.println("Correct!");
-            return true;
-        }
-    }
 }

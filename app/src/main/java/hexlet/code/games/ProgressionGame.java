@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import static hexlet.code.Engine.RANDOM_GENERATOR;
 
-public final class ProgressionGame {
+public final class ProgressionGame implements Game {
 
     private static final int PROGRESSION_LENGTH_MIN = 5;
     private static final int PROGRESSION_LENGTH_MAX = 15; // not included
@@ -11,15 +11,15 @@ public final class ProgressionGame {
     private static final int START_VALUE_MIN = 3;
     private static final int START_VALUE_MAX = 12; // not included
 
-    private int answer;
-
-    public String generateQuestion() {
+    @Override
+    public String[] getQuestionAndAnswer() {
         int length = RANDOM_GENERATOR.nextInt(PROGRESSION_LENGTH_MIN, PROGRESSION_LENGTH_MAX);
         int hidePosition = RANDOM_GENERATOR.nextInt(0, length);
         int increment = RANDOM_GENERATOR.nextInt(INCREMENT_MIN, INCREMENT_MAX);
         int startValue = RANDOM_GENERATOR.nextInt(START_VALUE_MIN, START_VALUE_MAX);
         int previousValue = startValue;
         StringBuilder questionBuilder = new StringBuilder();
+        int answer = 0;
         if (hidePosition == 0) {
             questionBuilder.append("..");
             answer = startValue;
@@ -36,13 +36,10 @@ public final class ProgressionGame {
             }
             previousValue = currentValue;
         }
-        return questionBuilder.toString().trim();
+        return new String[]{questionBuilder.toString().trim(), String.valueOf(answer)};
     }
 
-    public String getAnswer() {
-        return String.valueOf(answer);
-    }
-
+    @Override
     public String explainRules() {
         return "What number is missing in the progression?\n";
     }
