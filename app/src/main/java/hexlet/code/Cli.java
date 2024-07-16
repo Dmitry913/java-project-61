@@ -1,22 +1,13 @@
 package hexlet.code;
 
-import java.util.Scanner;
+import static hexlet.code.utils.Util.SCANNER;
 
 public class Cli {
 
-    private static final Scanner SCANNER = new Scanner(System.in);
-
-    public static Integer selectGame() {
-        return Integer.parseInt(SCANNER.nextLine());
-    }
-
-    public static String getUsername() {
+    public static void firstGame() {
+        System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
-        return SCANNER.nextLine();
-    }
-
-    public static String getUserAnswer() {
-        System.out.print("Your answer: ");
-        return SCANNER.nextLine();
+        String username = SCANNER.nextLine();
+        System.out.println("Hello, " + username + "!");
     }
 }

@@ -6,8 +6,12 @@ import hexlet.code.games.GCDGame;
 import hexlet.code.games.PrimeGame;
 import hexlet.code.games.ProgressionGame;
 
+import static hexlet.code.Cli.firstGame;
+import static hexlet.code.utils.Util.SCANNER;
+
 public class App {
 
+    public static final int EXIT = 0;
     public static final int FIRST_GAME = 1;
     public static final int SECOND_GAME = 2;
     public static final int THIRD_GAME = 3;
@@ -17,7 +21,7 @@ public class App {
 
     public static void main(String[] args) {
         printGameMenu();
-        int userChoice = Cli.selectGame();
+        int userChoice = Integer.parseInt(SCANNER.nextLine());
         System.out.println();
         switch (userChoice) {
             case SIXTH_GAME:
@@ -38,15 +42,11 @@ public class App {
             case FIRST_GAME:
                 firstGame();
                 break;
+            case EXIT:
+                break;
             default:
                 throw new RuntimeException(String.format("Игры %s не сущестует", userChoice));
         }
-    }
-
-    private static void firstGame() {
-        Greeting.welcome();
-        String username = Cli.getUsername();
-        Greeting.helloUser(username);
     }
 
     public static void printGameMenu() {

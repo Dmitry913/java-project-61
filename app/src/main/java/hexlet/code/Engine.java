@@ -2,19 +2,19 @@ package hexlet.code;
 
 import hexlet.code.games.Game;
 
-import java.util.Random;
+import static hexlet.code.utils.Util.SCANNER;
 
 public class Engine {
 
     private static final int COUNT_GAMES = 3;
-    public static final Random RANDOM_GENERATOR = new Random();
 
     public static void runFlow(Game game) {
         String rules = game.explainRules();
 
-        Greeting.welcome();
-        String username = Cli.getUsername();
-        Greeting.helloUser(username);
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        String username = SCANNER.nextLine();
+        System.out.println("Hello, " + username + "!");
 
         System.out.println(rules);
 
@@ -24,7 +24,8 @@ public class Engine {
             String correctAnswer = questionAndAnswer[1];
             System.out.println("Question: " + question);
 
-            String userAnswer = Cli.getUserAnswer();
+            System.out.print("Your answer: ");
+            String userAnswer = SCANNER.nextLine();
             if (!correctAnswer.equals(userAnswer)) {
                 System.out.printf("'%s' is wrong answer ;(. Correct answer was '%s'.\n", userAnswer, correctAnswer);
                 System.out.printf("Let's try again, %s!\n", username);

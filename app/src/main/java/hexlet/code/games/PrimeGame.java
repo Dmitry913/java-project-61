@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import static hexlet.code.Engine.RANDOM_GENERATOR;
+import static hexlet.code.utils.Util.RANDOM_GENERATOR;
 
 public final class PrimeGame implements Game {
 
@@ -21,6 +21,9 @@ public final class PrimeGame implements Game {
     }
 
     private boolean isPrime(int number) {
+        if (number <= 1) {
+            return false;
+        }
         int divider = 2;
         while (divider < (number / 2 + 1)) {
             if (number % divider == 0) {

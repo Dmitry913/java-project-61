@@ -1,6 +1,7 @@
 package hexlet.code.games;
 
-import static hexlet.code.Engine.RANDOM_GENERATOR;
+
+import static hexlet.code.utils.Util.RANDOM_GENERATOR;
 
 public final class CalculatorGame implements Game {
 
@@ -16,8 +17,8 @@ public final class CalculatorGame implements Game {
         String template = "%d %s %d";
         String question;
         int answer = 0;
-
-        switch (RANDOM_GENERATOR.nextInt(ADDITION, MULTIPLICATION + 1)) {
+        int typeOperation = RANDOM_GENERATOR.nextInt(ADDITION, MULTIPLICATION + 1);
+        switch (typeOperation) {
             case ADDITION:
                 question = String.format(template, firstNumber, "+", secondNumber);
                 answer = firstNumber + secondNumber;
@@ -31,9 +32,10 @@ public final class CalculatorGame implements Game {
                 answer = firstNumber * secondNumber;
                 break;
             default:
-                question = "";
-                answer = Integer.MIN_VALUE;
-                break;
+                throw new RuntimeException(
+                        String.format(
+                                "Сгенерированное число (%d) не соответствет доступным типам операций.", typeOperation)
+                );
         }
         return new String[]{question, String.valueOf(answer)};
     }

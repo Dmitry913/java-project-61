@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import static hexlet.code.Engine.RANDOM_GENERATOR;
+import static hexlet.code.utils.Util.RANDOM_GENERATOR;
 
 public final class GCDGame implements Game {
 
